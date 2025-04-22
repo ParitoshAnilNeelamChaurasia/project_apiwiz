@@ -10,19 +10,17 @@ function fetchWeather() {
             },
             error => {
                 console.error('Error getting location:', error);
-                // Default to London if geolocation fails
                 getWeatherData(51.5074, -0.1278);
             }
         );
     } else {
         console.log('Geolocation is not supported by this browser.');
-        // Default to London if geolocation is not supported
         getWeatherData(51.5074, -0.1278);
     }
 }
 
 function getWeatherData(lat, lon) {
-    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; // Replace with your actual API key
+    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY'; 
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
     fetch(url)
@@ -44,7 +42,6 @@ function getWeatherData(lat, lon) {
         })
         .catch(error => {
             console.error('Error fetching weather data:', error);
-            // Fallback data if API fails
             currentWeather = {
                 temp: 20,
                 main: 'Clear',
