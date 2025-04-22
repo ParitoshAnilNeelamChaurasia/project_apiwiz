@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize the app
   initApp();
 });
 
-
 function initApp() {
-  // DOM Elements
   const moodButtons = document.querySelectorAll(".mood-btn");
   const saveButton = document.getElementById("save-btn");
   const moodNote = document.getElementById("mood-note");
@@ -18,14 +15,12 @@ function initApp() {
   const moodFilter = document.getElementById("mood-filter");
   const notification = document.getElementById("notification");
 
-  // State variables
   let selectedMood = null;
   let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
   let entries = loadEntries();
-
-  // Add to initApp function
+  
 const exportCsvButton = document.getElementById('export-csv');
 exportCsvButton.addEventListener('click', exportToCsv);
 
@@ -38,12 +33,10 @@ function exportToCsv() {
         entry.weather ? `${Math.round(entry.weather.temp)}°C` : 'N/A',
         entry.weather ? entry.weather.description : 'N/A'
     ]);
-    
     let csvContent = headers.join(',') + '\n';
     rows.forEach(row => {
         csvContent += row.map(field => `"${field.replace(/"/g, '""')}"`).join(',') + '\n';
     });
-    
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -59,7 +52,6 @@ function exportToCsv() {
   generateCalendar(currentMonth, currentYear);
   renderNotesList();
   fetchWeather();
-
   // Mood selection
   moodButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -70,7 +62,6 @@ function exportToCsv() {
     });
   });
 
-  // Save entry
   saveButton.addEventListener("click", function () {
     if (!selectedMood) {
       showNotification("Please select a mood first");
@@ -88,22 +79,18 @@ function exportToCsv() {
     };
 
     saveEntry(newEntry);
-    entries = loadEntries(); // Refresh entries
-
-    // Reset form
+    entries = loadEntries(); 
+    
     moodButtons.forEach((btn) => btn.classList.remove("selected"));
     moodNote.value = "";
     selectedMood = null;
     document.body.style.backgroundColor = "";
-
-    // Update UI
+    
     generateCalendar(currentMonth, currentYear);
     renderNotesList();
 
     showNotification("Mood entry saved successfully!");
   });
-
-  // Calendar navigation
   prevMonthButton.addEventListener("click", function () {
     currentMonth--;
     if (currentMonth < 0) {
@@ -122,12 +109,9 @@ function exportToCsv() {
     generateCalendar(currentMonth, currentYear);
   });
 
-  // Filter notes
   moodFilter.addEventListener("change", function () {
     renderNotesList();
   });
-
-  // Helper functions
   function updateCurrentDateDisplay() {
     const options = {
       weekday: "long",
@@ -356,5 +340,3 @@ function generateCalendar(month, year) {
     return date.toLocaleDateString(undefined, options);
   }
 }
-
-
