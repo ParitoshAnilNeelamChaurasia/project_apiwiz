@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMate - Your Personal Mood Journal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+        <header>
+            <h1>MoodMate</h1>
+            <div class="date-weather">
+                <div id="current-date"></div>
+                <div id="weather-display">
+                    <span id="weather-icon"></span>
+                    <span id="temperature"></span>
+                    <span id="location"></span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mood-entry">
+                <h2>How are you feeling today?</h2>
+                <div class="mood-options">
+                    <button class="mood-btn" data-mood="happy">😊 Happy</button>
+                    <button class="mood-btn" data-mood="sad">😢 Sad</button>
+                    <button class="mood-btn" data-mood="angry">😠 Angry</button>
+                    <button class="mood-btn" data-mood="calm">😌 Calm</button>
+                    <button class="mood-btn" data-mood="excited">🤩 Excited</button>
+                </div>
+                <div class="note-section">
+                    <textarea id="mood-note" placeholder="Add a note..."></textarea>
+                    <button id="save-btn">Save</button>
+                </div>
+            </section>
+
+
+            <!-- for calender -->
+            <section class="calendar-section">
+                <h2 id="current-month-year"></h2>
+                <div class="calendar-controls">
+                    <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar">
+                    <div class="calendar-header">
+                        <div>S</div>
+                        <div>M</div>
+                        <div>T</div>
+                        <div>W</div>
+                        <div>T</div>
+                        <div>F</div>
+                        <div>S</div>
+                    </div>
+                    <div class="calendar-days" id="calendar-days"></div>
+                </div>
+            </section>
+
+            <section class="all-notes">
+                <h2>All Notes</h2>
+                <button id="export-csv">Export to CSV</button>
+                <div class="filter-options">
+                    <select id="mood-filter">
+                        <option value="all">All Moods</option>
+                        <option value="happy">Happy</option>
+                        <option value="sad">Sad</option>
+                        <option value="angry">Angry</option>
+                        <option value="calm">Calm</option>
+                        <option value="excited">Excited</option>
+                    </select>
+                </div>
+                <div class="notes-list" id="notes-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="scripts/weather.js"></script>
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/toggle.js"></script>
+    <script src="scripts/export.js"></script>
+</body>
+</html>

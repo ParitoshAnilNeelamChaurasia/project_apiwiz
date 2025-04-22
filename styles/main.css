@@ -1,0 +1,159 @@
+:root {
+    --primary-color: #6a5acd;
+    --secondary-color: #9370db;
+    --light-color: #e6e6fa;
+    --dark-color: #483d8b;
+    --text-color: #333;
+    --bg-color: #f8f9fa;
+    --happy-color: #ffdd59;
+    --sad-color: #54a0ff;
+    --angry-color: #ff6b6b;
+    --calm-color: #1dd1a1;
+    --excited-color: #f368e0;
+}
+
+[data-theme="dark"] {
+    --primary-color: #7e6bdc;
+    --secondary-color: #a58bf2;
+    --light-color: #2d3436;
+    --dark-color: #b2bec3;
+    --text-color: #f5f6fa;
+    --bg-color: #1e272e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--secondary-color);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.date-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#current-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#weather-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mood-entry {
+    background-color: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mood-entry h2 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.mood-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.mood-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mood-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mood-btn[data-mood="happy"] {
+    background-color: var(--happy-color);
+    color: #333;
+}
+
+.mood-btn[data-mood="sad"] {
+    background-color: var(--sad-color);
+    color: white;
+}
+
+.mood-btn[data-mood="angry"] {
+    background-color: var(--angry-color);
+    color: white;
+}
+
+.mood-btn[data-mood="calm"] {
+    background-color: var(--calm-color);
+    color: white;
+}
+
+.mood-btn[data-mood="excited"] {
+    background-color: var(--excited-color);
+    color: white;
+}
+
+.mood-btn.selected {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+.note-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#mood-note {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    resize: none;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
